@@ -8,7 +8,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'crusoexia/vim-monokai'
 Plug 'beikome/cosme.vim'
 "text
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-surround'
 Plug 'chun-yang/auto-pairs'
 Plug 'sirver/ultisnips'
@@ -31,6 +31,17 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 "git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-sensible'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'chemzqm/vim-jsx-improve', { 'for': 'javascript' }
+
 call plug#end()
 set number
 highlight LineNr guifg=#ab9f9f
@@ -51,6 +62,7 @@ set t_Co=256
 set background=dark
 set termguicolors
 "colorscheme "material-monokai" 
+let g:airline_theme='minimalist'
 colorscheme "cosme"
 " CtrlP
 let g:ctrlp_regexp = 1
@@ -82,6 +94,9 @@ set autowrite
 set autowriteall
 autocmd FocusLost * :wa
 autocmd CursorHold,CursorHoldI * update
+
+"window settings
+set cursorline
 
 " Search options
 set is
