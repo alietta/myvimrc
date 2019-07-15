@@ -171,24 +171,28 @@ nmap <leader>b :EasyBuffer<cr>
 "easyMotion
 map <Leader> <Plug>(easymotion-prefix)
 "windows
-nnoremap <C-h> :call WinMove('h')<CR>
-nnoremap <C-j> :call WinMove('j')<CR>
-nnoremap <C-k> :call WinMove('k')<CR>
-nnoremap <C-l> :call WinMove('l')<CR>
-
-
-function! WinMove(key)
-  let t:curwin = winnr()
-  exec "wincmd ".a:key
-  if (t:curwin == winnr())
-    if (match(a:key, '[jk]'))
-      wincmd w
-    else
-      wincmd s
-    endif
-    exec "wincmd ".a:key
-  endif
-endfunction
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+"nnoremap <C-h> :call WinMove('h')<CR>
+"nnoremap <C-j> :call WinMove('j')<CR>
+"nnoremap <C-k> :call WinMove('k')<CR>
+"nnoremap <C-l> :call WinMove('l')<CR>
+"
+"
+"function! WinMove(key)
+"  let t:curwin = winnr()
+"  exec "wincmd ".a:key
+"  if (t:curwin == winnr())
+"    if (match(a:key, '[jk]'))
+"      wincmd w
+"    else
+"      wincmd s
+"    endif
+"    exec "wincmd ".a:key
+"  endif
+"endfunction
 
 " for command mode
 nnoremap <S-Tab> <<
@@ -222,3 +226,22 @@ highlight lCursor guifg=NONE guibg=Cyan
 inoremap jj <C-^>
 "insert one char
 nnoremap <Space> i_<Esc>r
+
+"copy
+nnoremap <C-y> "+y
+vnoremap <C-y> "+y
+"copy path
+nmap ,cs :let @+=expand("%")<CR>
+nmap ,cl :let @+=expand("%:p")<CR>
+"clean buffers
+nmap ,bc :%bd
+"folding (open cloze blocks)
+"set foldenable " отклключить фолдинг по умолчанию
+"set foldmethod=syntax " определять блоки на основе синтаксиса файла
+"set foldmethod=indent " определять блоки на основе отступов
+"set foldnestmax=10       "deepest fold is 3 levels
+"set nofoldenable
+""set foldcolumn=10 " показать полосу для управления сворачиванием
+"set foldlevel=3 " Первый уровень вложенности открыт, остальные закрыты
+"set foldopen=all " автоматическое открытие сверток при заходе в них
+
