@@ -2,7 +2,7 @@ syntax on
 syntax enable
 call plug#begin('~/.vim/plugged')
 "windows
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree',
 Plug 'kien/ctrlp.vim'
 "theme
 Plug 'crusoexia/vim-monokai'
@@ -25,12 +25,13 @@ Plug 'rhysd/vim-crystal'
 Plug 'slim-template/vim-slim'
 
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
 "md
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
-
 "git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -42,18 +43,20 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chemzqm/vim-jsx-improve', { 'for': 'javascript' }
 
+Plug 'vim-scripts/BufOnly.vim'
+
 call plug#end()
 set number
 highlight LineNr guifg=#ab9f9f
 let g:mapleader=','
+set laststatus=2
 " Backup and swap
 set noswapfile
 set nobackup
 set nowritebackup
 set mouse=nicr
 " exit to normal mode with 'jj'
-inoremap jk <ESC>
-inoremap jf <ESC>:wa<CR>
+"inoremap jk <ESC>
 "paste ; at line end
 nnoremap ; A;<ESC><CR>
 "theme"
@@ -62,8 +65,8 @@ set t_Co=256
 set background=dark
 set termguicolors
 "colorscheme "material-monokai" 
-let g:airline_theme='minimalist'
 colorscheme "cosme"
+let g:airline_theme='minimalist'
 " CtrlP
 let g:ctrlp_regexp = 1
 let g:ctrlp_open_new_file = 'r'
@@ -94,6 +97,7 @@ set autowrite
 set autowriteall
 autocmd FocusLost * :wa
 autocmd CursorHold,CursorHoldI * update
+nmap <C-s> :wa <CR>
 
 "window settings
 set cursorline
@@ -130,6 +134,9 @@ if has("gui_macvim")
 end
 
 " NERD tree
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeQuitOnOpen = 1
 nmap <leader>t :NERDTreeToggle<cr>
 let NERDTreeShowHidden=1
 map <leader>r :NERDTreeFind<cr>
@@ -175,6 +182,10 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+
+nmap j gj
+nmap k gk
 "nnoremap <C-h> :call WinMove('h')<CR>
 "nnoremap <C-j> :call WinMove('j')<CR>
 "nnoremap <C-k> :call WinMove('k')<CR>
@@ -226,7 +237,6 @@ highlight lCursor guifg=NONE guibg=Cyan
 inoremap jj <C-^>
 "insert one char
 nnoremap <Space> i_<Esc>r
-
 "copy
 nnoremap <C-y> "+y
 vnoremap <C-y> "+y
@@ -234,7 +244,7 @@ vnoremap <C-y> "+y
 nmap ,cs :let @+=expand("%")<CR>
 nmap ,cl :let @+=expand("%:p")<CR>
 "clean buffers
-nmap ,bc :%bd
+nmap ,bc :BufOnly<CR>
 "folding (open cloze blocks)
 "set foldenable " отклключить фолдинг по умолчанию
 "set foldmethod=syntax " определять блоки на основе синтаксиса файла
