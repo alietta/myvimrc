@@ -15,7 +15,8 @@ Plug 'sirver/ultisnips'
 Plug 'scrooloose/syntastic'
 Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
-
+Plug 'mxw/vim-jsx'
+" Plug 'w0rp/ale'
 "find
 Plug 'easymotion/vim-easymotion'
 Plug 'rking/ag.vim'
@@ -32,6 +33,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
+Plug 'mattn/emmet-vim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -117,9 +119,16 @@ set tabstop=2
 set shiftwidth=2
 set et
 
+set noexpandtab
+set nosmarttab
+" autocmd FileType jsx noexpandtab nosmarttab
+
 " Insert empty lines in normal mode
 nnoremap - o<esc>
 nnoremap _ O<esc>
+
+"emmet
+let g:user_emmet_leader_key='<c-e>'
 
 " Visual settings for gui
 if has("gui_running")
@@ -173,7 +182,7 @@ autocmd! BufNewFile *:* nested call s:gotoline()
 autocmd! BufRead *:* nested call s:gotoline()
 
 " EasyBuffer
-nmap <leader>b :EasyBuffer<cr>
+" nmap <leader>b :EasyBuffer<cr>
 
 "easyMotion
 map <Leader> <Plug>(easymotion-prefix)
@@ -227,6 +236,11 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+"ale - lint jsx
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+
 "markdown md
 let g:mkdp_auto_close = 0
 "russian
@@ -245,6 +259,8 @@ nmap ,cs :let @+=expand("%")<CR>
 nmap ,cl :let @+=expand("%:p")<CR>
 "clean buffers
 nmap ,bc :BufOnly<CR>
+"go to previous buffer
+nmap <leader>b :bp<cr>
 "folding (open cloze blocks)
 "set foldenable " отклключить фолдинг по умолчанию
 "set foldmethod=syntax " определять блоки на основе синтаксиса файла
