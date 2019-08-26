@@ -47,8 +47,14 @@ Plug 'chemzqm/vim-jsx-improve', { 'for': 'javascript' }
 
 Plug 'vim-scripts/BufOnly.vim'
 
+Plug 'prettier/vim-prettier'
+Plug 'mxw/vim-jsx'
+
+Plug 'dhruvasagar/vim-table-mode'
+
 call plug#end()
 set number
+set relativenumber
 highlight LineNr guifg=#ab9f9f
 let g:mapleader=','
 set laststatus=2
@@ -111,7 +117,8 @@ set ic
 
 "show characters
 "set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·,
-set listchars=tab:>·,trail:~,extends:>,precedes:<,space:·,
+set listchars=tab:¦·,trail:~,extends:>,precedes:<,space:·,
+" set listchars=tab:°·,trail:~,extends:>,precedes:<,space:·,
 set list
 
 " Tab options
@@ -240,6 +247,7 @@ let g:syntastic_check_on_wq = 0
 let g:ale_sign_error = '●' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+let g:ale_linters = {'javascript': ['eslint']}
 
 "markdown md
 let g:mkdp_auto_close = 0
