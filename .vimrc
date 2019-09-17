@@ -16,7 +16,7 @@ Plug 'scrooloose/syntastic'
 Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 "find
 Plug 'easymotion/vim-easymotion'
 Plug 'rking/ag.vim'
@@ -244,9 +244,11 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 "ale - lint jsx
-let g:ale_sign_error = '●' " Less aggressive than the default '>>'
-let g:ale_sign_warning = '.'
-let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+let g:ale_sign_error = '💣' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '►'
+let g:ale_lint_on_enter = 1 " Less distracting when opening a new file
 let g:ale_linters = {'javascript': ['eslint']}
 
 "markdown md
