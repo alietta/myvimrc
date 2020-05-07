@@ -1,0 +1,5 @@
+:CocConfig
+
+{
+  "suggest.autoTrigger": "trigger"
+}
