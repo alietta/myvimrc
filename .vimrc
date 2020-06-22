@@ -78,7 +78,7 @@ nnoremap ; A;<ESC><CR>
 let g:materialmonokai_italic=1
 set t_Co=256
 set background=dark
-set termguicolors
+" set termguicolors
 "colorscheme "material-monokai" 
 " colorscheme "cosme"
 
@@ -255,17 +255,19 @@ let g:syntastic_check_on_wq = 0
 "ale - lint jsx
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
-let g:ale_sign_error = '💣' " Less aggressive than the default '>>'
-let g:ale_sign_warning = '►'
+let g:ale_sign_error = '>>' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '--'
 let g:ale_lint_on_enter = 1 " Less distracting when opening a new file
-let g:ale_javascript_prettier_use_local_config = 1
+" let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'jsx': ['eslint'],
 \   'typescript': ['tsserver', 'tslint'],
 \   'typescriptreact': ['tsserver', 'tslint'],
 \}
 let g:ale_fixers = {
-\    'javascript': ['eslint'],
+\    'javascript': ['prettier', 'eslint'],
+\    'jsx': ['prettier', 'eslint'],
 \    'typescript': ['prettier'],
 \    'typescriptreact': ['prettier', 'eslint'],
 \    'css': ['prettier'],
@@ -285,6 +287,7 @@ let g:ale_typescript_tsserver_config_path = ''
 let g:ale_typescript_tsserver_executable = 'tsserver'
 let g:ale_typescript_tsserver_use_global = 0
 let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
+let g:ale_linter_aliases = {'javascriptreact': 'javascript'}
 
 "markdown md
 let g:mkdp_auto_close = 0
@@ -458,4 +461,5 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
 
