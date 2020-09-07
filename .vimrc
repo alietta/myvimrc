@@ -6,6 +6,7 @@ Plug 'scrooloose/nerdtree',
 "theme
 Plug 'morhetz/gruvbox'
 "text
+Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Valloric/YouCompleteMe'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -70,7 +71,8 @@ nmap <C-s> :wa <CR>
 
 "fzf
 nnoremap <silent> <C-p> :GFiles<CR>
-nnoremap <silent> <C-o> :Buffers<CR>
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>p :Buffers<CR>
 
 "window settings
 set cursorline
@@ -137,7 +139,7 @@ map <C-l> <C-W>l
 
 nmap j gj
 nmap k gk
-"
+
 "russian
 set keymap=russian-jcukenwin
 set iminsert=0
@@ -145,7 +147,7 @@ set imsearch=0
 highlight lCursor guifg=NONE guibg=Cyan
 inoremap jj <C-^>
 "insert one char
-nnoremap <Space> i_<Esc>r
+nnoremap <leader><Space> i_<Esc>r
 "copy
 nnoremap <C-y> "+y
 vnoremap <C-y> "+y
@@ -287,5 +289,4 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
 
