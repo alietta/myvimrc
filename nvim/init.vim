@@ -27,7 +27,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'kamykn/spelunker.vim'
 "md
-" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 "git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
