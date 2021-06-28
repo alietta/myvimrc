@@ -12,6 +12,7 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 " Plug 'Valloric/YouCompleteMe'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-yaml'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'yuezk/vim-js'
@@ -22,6 +23,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'slim-template/vim-slim'
 "find
 Plug 'easymotion/vim-easymotion'
+Plug 'skwp/greplace.vim'
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
@@ -43,6 +45,11 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
+
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 
 " set autoread " To auto read when a file is changed from outside
 set number
@@ -71,6 +78,9 @@ set autowriteall
 autocmd FocusLost * :wa
 autocmd CursorHold,CursorHoldI * update
 nmap <C-s> :wa <CR>
+
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
 
 "fzf
 nnoremap <silent> <C-p> :GFiles<CR>
@@ -174,6 +184,7 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-jest',
+  \ 'coc-yaml',
   \ ]
 
 " from readme
